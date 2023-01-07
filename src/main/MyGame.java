@@ -88,6 +88,4 @@ public class MyGame extends Game {
 		game.setKeyboardListener(new MyKeyboardListener());
 		game.initGame();
 	}
-
-
 }
