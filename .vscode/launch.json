@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch PeriodicScheduler",
+            "request": "launch",
+            "mainClass": "game.PeriodicScheduler",
+            "projectName": "BasicGame"
+        },
+        {
+            "type": "java",
+            "name": "Launch GameCanvas",
+            "request": "launch",
+            "mainClass": "gui.GameCanvas",
+            "projectName": "BasicGame"
+        },
+        {
+            "type": "java",
+            "name": "Launch GameDashboard",
+            "request": "launch",
+            "mainClass": "gui.GameDashboard",
+            "projectName": "BasicGame"
+        },
+        {
+            "type": "java",
+            "name": "Launch GameUI",
+            "request": "launch",
+            "mainClass": "gui.GameUI",
+            "projectName": "BasicGame"
+        },
+        {
+            "type": "java",
+            "name": "Launch MyGame",
+            "request": "launch",
+            "mainClass": "main.MyGame",
+            "projectName": "BasicGame"
+        }
+    ]
+}

@@ -9,6 +9,7 @@ import game.GameContent;
 import gui.GameCanvas;
 import my_game.Pokimon;
 import my_game.Soldier;
+import my_game.Stairs;
 import my_game.MyCharacter;
 import my_game.MyPolygon;
 import my_game.Point;
@@ -18,21 +19,28 @@ public class MyContent extends GameContent {
 	private MyPolygon myPolygon;
 	private MyCharacter pokeball;
 	private Soldier soldier;
+	private Stairs stairs;
 
 	@Override
 	public void initContent() {
 		//pokimon = new Pokimon();
 		//pokimon.setLocation(new Point(100, 100));
-		// Point[] points = {
-		// 		new Point(100, 100),
-		// 		new Point(130, 50),
-		// 		new Point(170, 50),
-		// 		new Point(200, 100),
-		// 		new Point(220, 170),
-		// 		new Point(170, 150),
-		// 		new Point(130, 150)
-		// };
-		// myPolygon = new MyPolygon(points);
+		//  Point[] points = {
+		//  		new Point(100, 100),
+		//  		new Point(200, 100),
+		//  		new Point(250, 100),
+		//  		new Point(300, 100),
+		//  		new Point(150, 100),
+		//  		new Point(100, 400),
+		//  		new Point(400, 400)
+		//  };
+		 Point[] points = new Point[6];
+		 for (int i = 0; i < points.length; i++) {
+			int x = (int) (850*Math.random());
+			points[i] = new Point(x, 100 + 100*i);
+		 }
+		 
+		stairs = new Stairs(points);
 		soldier = new Soldier();
 		soldier.setLocation(new Point(660, 550));
 	}
@@ -53,9 +61,10 @@ public class MyContent extends GameContent {
 		return myPolygon;
 	}
 
-	// DONE
-	// create a method with the name myCharacter which returns
-	// your character for others to use.
+	public Stairs stairs(){
+		return stairs;
+	}
+
 	public MyCharacter myCharacter() {
 		return pokeball;
 	}

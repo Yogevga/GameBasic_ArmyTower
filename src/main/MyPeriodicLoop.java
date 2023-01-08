@@ -8,6 +8,7 @@ import my_game.MyCharacter;
 import my_game.Point;
 import my_game.Pokimon;
 import my_game.Soldier;
+import my_game.Stairs;
 import shapes.Shape;
 
 public class MyPeriodicLoop extends PeriodicLoop {
@@ -52,6 +53,13 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 0) {
 			content.soldier().switchDirectionPolicy();
 		}
+		// check on stairs
+		int cur_x = content.soldier().getLocation().x ;
+		int cur_y = content.soldier().getLocation().y;
+		if (content.stairs().checkPointOnStairs(new Point(cur_x,cur_y))){
+			content.soldier().setOnStair(true);
+		}
+		else content.soldier().setOnStair(false);
 	}
 
 	// TODO

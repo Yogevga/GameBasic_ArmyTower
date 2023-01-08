@@ -60,7 +60,7 @@ public class MyKeyboardListener extends KeyboardListener{
 
 	@Override
 	public void wKeyPressed() {
-		//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.UP);
+		myContent.soldier().moveLocation(0, -50);
 		System.out.println("w key pressed.");
 	}
 

@@ -7,11 +7,11 @@ import game.Game;
 import game.PeriodicLoop;
 import shapes.Image;
 
-public class Soldier implements ShapeListener{
+public class Soldier implements ShapeListener {
 
 	public enum Direction {
-		RIGHT(10, 0),
-		LEFT(-10, 0),
+		RIGHT(10, 10),
+		LEFT(-10, 10),
 		UP(0, -10),
 		DOWN(0, 10);
 
@@ -31,17 +31,16 @@ public class Soldier implements ShapeListener{
 		}
 	}
 
-
 	private Point location;
-	private Direction directionPolicy = Direction.RIGHT;
+	private Direction directionPolicy = Direction.DOWN;
 	private Direction direction = Direction.RIGHT;
 
 	private final String[] images = { "resources/soldier1.png" };
 	private int imageIndex = 0;
 	private final String imageID = "soldier";
 	private boolean isMoving = true;
+	private boolean isOnStair = false;
 	private int rotation = 0; // In degrees
-
 
 	public void addToCanvas() {
 		GameCanvas canvas = Game.UI().canvas();
@@ -119,6 +118,14 @@ public class Soldier implements ShapeListener{
 		isMoving = true;
 	}
 
+	public void setOnStair(boolean tf) {
+		isOnStair = tf;
+	}
+
+	public boolean getOnStair() {
+		return isOnStair;
+	}
+
 	public void move() {
 
 		if (isMoving) {
@@ -127,12 +134,18 @@ public class Soldier implements ShapeListener{
 			// if move is possible, i.e., maze does not block
 			direction = directionPolicy;
 			location.x = desired.x;
-			location.y = desired.y;
+			if (!isOnStair) {
+				location.y = desired.y;
+			}
+			//System.out.println(location.y);
+			if (location.y >= 500) {
+				location.y = 500;
+			}
 			// After changing the soldier self location, move also its image in the canvas
 			// accordingly.
 			Game.UI().canvas().moveToLocation(imageID, location.x, location.y);
-			}
 		}
+	}
 
 	@Override
 	public void shapeMoved(String shapeID, int dx, int dy) {

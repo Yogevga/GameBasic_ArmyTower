@@ -14,6 +14,7 @@ import buttons.MusicButton;
 import buttons.RotatePolygonButton;
 import my_game.Pokimon;
 import my_game.Soldier;
+import my_game.Stairs;
 import shapes.Circle;
 import shapes.Image;
 
@@ -34,7 +35,9 @@ public class MyGame extends Game {
 		image.setzOrder(3);
 		canvas.addShape(image);
 
-		//canvas.addShape(content.polygon().getVisualPolygon());
+		Stairs stairs = content.stairs();
+		stairs.addToCanvas();
+
 		//Circle c = new Circle("circle", 300, 300, 50);
 		//c.setDraggable(false);
 		//canvas.addShape(c);
@@ -45,7 +48,7 @@ public class MyGame extends Game {
 		super.initDashboard();
 		GameDashboard dashboard = gameUI.dashboard();
 		
-		dashboard.setBackground(Color.BLACK);
+		dashboard.setBackground(Color.gray);
 		
 		// Add a the Polygon buttons
 		dashboard.addButton(new EditPolygonButton("editButton", "Edit", 60, 40));
