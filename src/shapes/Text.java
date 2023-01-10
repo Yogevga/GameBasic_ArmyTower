@@ -48,7 +48,6 @@ public class Text extends Shape {
 	public void setFontName(String fontName) {
 		this.fontName = fontName;
 	}
-
 	
 	@Override
 	public void draw(Graphics2D g) {

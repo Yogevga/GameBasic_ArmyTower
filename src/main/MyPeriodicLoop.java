@@ -14,7 +14,7 @@ import shapes.Shape;
 public class MyPeriodicLoop extends PeriodicLoop {
 
 	private MyContent content;
-	private boolean hafifa_flag = false;
+	private boolean overlap_flag = false;
 	private int counter = 0;
 
 	public void setContent(MyContent content) {
@@ -28,14 +28,15 @@ public class MyPeriodicLoop extends PeriodicLoop {
 
 		// You can comment this line if you don't want the pokimon to move.
 		redrawSoldier();
-		redrawCharacter();
+		//redrawCharacter();
+		
 	
 		// TODO
 		// Redraw your character periodically by calling the correct method
 
 	}
 
-	private boolean checkHafifa() {
+	private boolean checkoverlap() {
 		Point p1 = content.pokeball().getLocation();
 		Point p2 = content.pokimon().getLocation();
 		double point_dist = p1.calcDist(p2);
@@ -56,10 +57,15 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		// check on stairs
 		int cur_x = content.soldier().getLocation().x ;
 		int cur_y = content.soldier().getLocation().y;
-		if (content.stairs().checkPointOnStairs(new Point(cur_x,cur_y))){
+		int stairNum = content.stairs().checkPointOnStairs( new Point(cur_x,cur_y) );
+		if ( stairNum > 0)
+		{
 			content.soldier().setOnStair(true);
+			content.score().updateScore(stairNum);
 		}
 		else content.soldier().setOnStair(false);
+		
+
 	}
 
 	// TODO
@@ -98,16 +104,16 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		if (pokeball == null)
 			return;
 		pokeball.move();
-		if (!hafifa_flag && checkHafifa()) {
+		if (!overlap_flag && checkoverlap()) {
 			content.pokimon().setLocation(content.pokeball().getLocation());
 			content.pokimon().stopMoving();
 			canvas.hide(content.pokimon().getImageID());
 			Sleeper.sleep(500);
 			pokeball.setImage(2);
 			pokeball.stopMoving();
-			hafifa_flag = true;
+			overlap_flag = true;
 		}
-		if (hafifa_flag && counter < max_flips) {
+		if (overlap_flag && counter < max_flips) {
 			// flicker
 			canvas.flipStatus(pokeball.getImageID());
 			counter++;

@@ -2,8 +2,6 @@ package my_game;
 
 import java.awt.Color;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.impl.PublicImpl;
-
 import game.Game;
 import gui.GameCanvas;
 import shapes.Rectangle;
@@ -40,8 +38,8 @@ public class Stairs {
 
     }
 
-    public boolean checkPointOnStairs(Point point) {
-        boolean isOnStairs = false;
+    public int checkPointOnStairs(Point point) {
+        int stairNum = 0;
         for (int index = 0; index < visStairs.length; index++) {
             Rectangle tmp = visStairs[index];
             if (tmp.getPosX() < (point.x + 110) && tmp.getPosX() + tmp.getWidth() > (point.x + 110)) // check on X
@@ -49,12 +47,12 @@ public class Stairs {
                 System.out.println( "tmp.y = " + tmp.getPosY() + ","+ (point.y+200) + " = point y, ");
                 if (tmp.getPosY() > (point.y + 200) && (tmp.getPosY() - tmp.getHeight() - 10) < (point.y+200) ) 
                 {
-                    isOnStairs = true;
-                    return isOnStairs;
+                    stairNum = index;
+                    return stairNum;
                 }
             }
         }
-        return isOnStairs;
+        return stairNum;
     }
 
 }

@@ -8,6 +8,7 @@ import game.Game;
 import game.GameContent;
 import gui.GameCanvas;
 import my_game.Pokimon;
+import my_game.Score;
 import my_game.Soldier;
 import my_game.Stairs;
 import my_game.MyCharacter;
@@ -20,6 +21,7 @@ public class MyContent extends GameContent {
 	private MyCharacter pokeball;
 	private Soldier soldier;
 	private Stairs stairs;
+	private Score score;
 
 	@Override
 	public void initContent() {
@@ -41,6 +43,7 @@ public class MyContent extends GameContent {
 		 }
 		 
 		stairs = new Stairs(points);
+		score = new Score();
 		soldier = new Soldier();
 		soldier.setLocation(new Point(660, 550));
 	}
@@ -67,6 +70,10 @@ public class MyContent extends GameContent {
 
 	public MyCharacter myCharacter() {
 		return pokeball;
+	}
+
+	public Score score(){
+		return score;
 	}
 
 	public void addCharacter() {

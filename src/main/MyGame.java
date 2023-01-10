@@ -13,6 +13,7 @@ import buttons.EditPolygonButton;
 import buttons.MusicButton;
 import buttons.RotatePolygonButton;
 import my_game.Pokimon;
+import my_game.Score;
 import my_game.Soldier;
 import my_game.Stairs;
 import shapes.Circle;
@@ -37,6 +38,9 @@ public class MyGame extends Game {
 
 		Stairs stairs = content.stairs();
 		stairs.addToCanvas();
+
+		Score score = content.score();
+		score.addToCanvas();
 
 		//Circle c = new Circle("circle", 300, 300, 50);
 		//c.setDraggable(false);
