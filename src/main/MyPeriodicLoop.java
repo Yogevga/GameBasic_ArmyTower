@@ -51,14 +51,18 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		int maxWidth = canvas.getBounds().width;
 		if (content.soldier().getLocation().x >= maxWidth || content.soldier().getLocation().x < 0) {
 			content.soldier().switchDirectionPolicy();
-		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 0) {
-			content.soldier().switchDirectionPolicy();
+		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 100) {
+			//content.soldier().switchDirectionPolicy();
+			content.soldier().moveLocation(0,20);
+			content.stairs().updateStairs(20);
+			content.stairs().printXY();
+			
 		}
 		// check on stairs
 		int cur_x = content.soldier().getLocation().x ;
 		int cur_y = content.soldier().getLocation().y;
 		int stairNum = content.stairs().checkPointOnStairs( new Point(cur_x,cur_y) );
-		if ( stairNum > 0)
+		if ( stairNum >= 0)
 		{
 			content.soldier().setOnStair(true);
 			content.score().updateScore(stairNum);
