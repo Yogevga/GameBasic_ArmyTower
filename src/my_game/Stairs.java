@@ -29,7 +29,7 @@ public class Stairs {
 
     public void updateStairs(int dy){
         updateStairsHeight(dy);
-        //removeOldStairs();
+        removeOldStairs();
     }
 
     public void updateStairsHeight(int dy){
@@ -50,7 +50,9 @@ public class Stairs {
                 int x = (int) (850*Math.random());
                 int y = 100;
                 Point point = new Point(x, y);
-                for (int j = visStairs.length - 1; j > 0; j--) {
+                visStairs[i].moveToLocation(x, y);
+                
+ /*                for (int j = visStairs.length - 1; j > 0; j--) {
                     visStairs[j] = visStairs[j-1];
                 }
                 int width = (int) Math.max(400 * Math.random(), 150);
@@ -60,11 +62,11 @@ public class Stairs {
                 visStairs[0].setIsFilled(true);
                 visStairs[0].setFillColor(Color.blue);
                 canvas.addShape(visStairs[0]);
-                stairsCount++;
+                stairsCount++; */
             }
             
         }
-        updateToCanvas();
+        //updateToCanvas();
         //addToCanvas();
     }
 

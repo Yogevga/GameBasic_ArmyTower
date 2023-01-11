@@ -52,7 +52,6 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		if (content.soldier().getLocation().x >= maxWidth || content.soldier().getLocation().x < 0) {
 			content.soldier().switchDirectionPolicy();
 		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 100) {
-			//content.soldier().switchDirectionPolicy();
 			content.soldier().moveLocation(0,20);
 			content.stairs().updateStairs(20);
 			content.stairs().printXY();
