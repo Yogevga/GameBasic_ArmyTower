@@ -23,5 +23,9 @@ public class Point {
 		double b = Math.pow(point.getY() - this.y,2);
 		return Math.sqrt(a+b);
 	}
+
+	public String toString(){
+		return (x + "," + y);
+	}
 }
 

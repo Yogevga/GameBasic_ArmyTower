@@ -55,7 +55,6 @@ public class MyPeriodicLoop extends PeriodicLoop {
 			content.soldier().moveLocation(0,20);
 			content.stairs().updateStairs(20);
 			content.stairs().printXY();
-			
 		}
 		// check on stairs
 		int cur_x = content.soldier().getLocation().x ;
@@ -64,7 +63,8 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		if ( stairNum >= 0)
 		{
 			content.soldier().setOnStair(true);
-			content.score().updateScore(stairNum);
+			//content.score().updateScore(stairNum);
+			content.score().updateScore(content.stairs().getStairsCount());
 		}
 		else content.soldier().setOnStair(false);
 		
