@@ -9,7 +9,11 @@ import my_game.Point;
 import my_game.Pokimon;
 import my_game.Soldier;
 import my_game.Stairs;
+import my_game.Score;
 import shapes.Shape;
+import shapes.Text;
+import java.awt.Color;
+
 
 public class MyPeriodicLoop extends PeriodicLoop {
 
@@ -28,6 +32,7 @@ public class MyPeriodicLoop extends PeriodicLoop {
 
 		// You can comment this line if you don't want the pokimon to move.
 		redrawSoldier();
+		isGameOver();
 		//redrawCharacter();
 		
 	
@@ -67,8 +72,23 @@ public class MyPeriodicLoop extends PeriodicLoop {
 			content.score().updateScore(content.stairs().getStairsCount());
 		}
 		else content.soldier().setOnStair(false);
-		
+	}
 
+	private void isGameOver(){
+		int scoreThres = 8; //after getting to stair #8, it will be possible to GameOver
+		int y_thres = 500;
+		int soldier_y = content.soldier().getLocation().y;
+		int curr_score = content.score().getScore();
+		if (curr_score >= scoreThres){
+			if (soldier_y >= y_thres) {
+				GameCanvas canvas = Game.UI().canvas();
+				Text t1 = new Text("gameover", "GAME_OVER", 300, 500);
+				t1.setColor(Color.RED);
+				t1.setFontName("Helvetica");
+				t1.setFontSize(100);
+				canvas.addShape(t1);
+			}
+		}
 	}
 
 	// TODO
@@ -90,7 +110,6 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	}
 
 	private void redrawCharacter() {
-
 		int max_flips = 10;
 		GameCanvas canvas = Game.UI().canvas();
 

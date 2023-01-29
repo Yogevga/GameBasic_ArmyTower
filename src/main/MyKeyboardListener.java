@@ -42,7 +42,7 @@ public class MyKeyboardListener extends KeyboardListener{
 	
 	@Override
 	public void characterTyped(char c) {
-		System.out.println("key character = '" + c + "'" + " pressed.");
+		//System.out.println("key character = '" + c + "'" + " pressed.");
 	}
 	
 	@Override
@@ -88,14 +88,29 @@ public class MyKeyboardListener extends KeyboardListener{
 	}
 
 	@Override
+	public void otherKeyReleased(KeyEvent e) {
+		System.out.println("other key Released. type:" + e.getKeyChar());
+	}
+
+	@Override
 	public void kKeyPressed() {
-		myContent.soldier().updateVelocity(-5);
+		myContent.soldier().updateVelocity("goLEFT");
 		System.out.println("K key pressed");
 	}
 
 	@Override
 	public void lKeyPressed() {
-		myContent.soldier().updateVelocity(5);
+		myContent.soldier().updateVelocity("goRIGHT");
 		System.out.println("L key pressed");
+	}
+
+	@Override
+	public void lKeyReleased(){
+		myContent.soldier().updateVelocity("abort");
+	}
+
+	@Override
+	public void kKeyReleased(){
+		myContent.soldier().updateVelocity("abort");
 	}
 }

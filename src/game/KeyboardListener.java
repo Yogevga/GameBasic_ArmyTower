@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
+import org.apache.poi.xwpf.usermodel.BreakClear;
+
 public class KeyboardListener {
 	public enum Direction {
 		RIGHT, LEFT, UP, DOWN;
@@ -21,6 +23,22 @@ public class KeyboardListener {
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
+			otherKeyReleased(e);
+			switch (e.getKeyCode()) {
+				case KeyEvent.VK_RIGHT:
+				directionalKeyReleased(Direction.RIGHT);
+				break;
+				case KeyEvent.VK_LEFT:
+				directionalKeyReleased(Direction.LEFT);
+				case KeyEvent.VK_K:
+				kKeyReleased();
+				break;
+				case KeyEvent.VK_L: 
+				lKeyReleased();
+				break;
+				default:
+				break;
+			}
 		}
 
 		@Override
@@ -108,10 +126,22 @@ public class KeyboardListener {
 	public void otherKeyPressed(KeyEvent e) {
 	}
 
+	public void otherKeyReleased(KeyEvent e){
+	}
+
 	public void lKeyPressed() {
 	}
 
 	public void kKeyPressed() {
+	}
+
+	public void lKeyReleased() {
+	}
+
+	public void kKeyReleased() {
+	}
+
+	public void directionalKeyReleased(Direction left) {
 	}
 	
 }

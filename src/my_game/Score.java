@@ -27,6 +27,10 @@ public class Score {
         return "Score : " + Integer.toString(score);
     }
 
+    public int getScore(){
+        return this.score;
+    }
+
     public void updateScore(int score){
         this.score = score;
         t1.setText(getScoreString());

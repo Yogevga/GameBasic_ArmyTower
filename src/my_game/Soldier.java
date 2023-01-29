@@ -35,6 +35,7 @@ public class Soldier implements ShapeListener {
 	private Direction directionPolicy = Direction.DOWN;
 	private Direction direction = Direction.RIGHT;
 	private int velocity = 0;
+	private int velocityPolicy = 0;
 	private int friction = 3;
 
 	private final String[] images = { "resources/soldier1.png" };
@@ -132,13 +133,22 @@ public class Soldier implements ShapeListener {
 		return isOnStair;
 	}
 
-	public void updateVelocity(int dv){
-		this.velocity += dv;
+	public void updateVelocity(String v){
+		//this.velocity += dv;
+		if (v=="goLEFT") {
+			this.velocityPolicy = -5;
+		}
+		else if (v=="goRIGHT") {
+			this.velocityPolicy = 5;
+		} else if (v=="abort"){
+			this.velocityPolicy = 0;
+		}
 		System.out.println(velocity);
 	}
 
 	public void move_new() {
 		// Move according to Velocity
+		velocity = velocity + velocityPolicy;
 		int dx = 0;
 		int maxVelocity = 50;
 		if (velocity > friction) { //Move right, Friction to the Left, friction is positive sign
@@ -165,7 +175,6 @@ public class Soldier implements ShapeListener {
 
 		location.x = desired.x;
 		Game.UI().canvas().moveToLocation(imageID, location.x, location.y);
-		
 	}
 
 	public void jump(){
