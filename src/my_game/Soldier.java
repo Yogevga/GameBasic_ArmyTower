@@ -34,12 +34,15 @@ public class Soldier implements ShapeListener {
 	private Point location;
 	private Direction directionPolicy = Direction.DOWN;
 	private Direction direction = Direction.RIGHT;
+	private int velocity = 0;
+	private int friction = 3;
 
 	private final String[] images = { "resources/soldier1.png" };
 	private int imageIndex = 0;
 	private final String imageID = "soldier";
 	private boolean isMoving = true;
 	private boolean isOnStair = false;
+	private boolean isOnFloor = true;
 	private int rotation = 0; // In degrees
 
 	public void addToCanvas() {
@@ -73,6 +76,9 @@ public class Soldier implements ShapeListener {
 		} else if (directionPolicy == Direction.LEFT) {
 			directionPolicy = Direction.RIGHT;
 		}
+		//System.out.println("curr" + velocity);
+		velocity = -velocity;
+		//System.out.println("after" + velocity);
 	}
 
 	public Direction getDirection() {
@@ -126,6 +132,56 @@ public class Soldier implements ShapeListener {
 		return isOnStair;
 	}
 
+	public void updateVelocity(int dv){
+		this.velocity += dv;
+		System.out.println(velocity);
+	}
+
+	public void move_new() {
+		// Move according to Velocity
+		int dx = 0;
+		int maxVelocity = 50;
+		if (velocity > friction) { //Move right, Friction to the Left, friction is positive sign
+			velocity -= friction;
+			velocity = Math.min(velocity,maxVelocity);
+			dx = velocity - friction;
+		} else if  (velocity < -friction) // 
+		{
+			velocity += friction;
+			velocity = -Math.min(-velocity,maxVelocity);
+			dx = velocity + friction;
+		} else dx = 0;
+		
+		Point desired = new Point(location.x + dx, location.y + directionPolicy.yVec());
+		
+		if (!isOnStair) {
+			location.y = desired.y;
+		}	
+
+		if (location.y >= 500) {
+			location.y = 500;
+			isOnFloor = true;
+		} else isOnFloor = false;
+
+		location.x = desired.x;
+		Game.UI().canvas().moveToLocation(imageID, location.x, location.y);
+		
+	}
+
+	public void jump(){
+		int k = 300;
+		// check if can jump
+		if (! (isOnStair || isOnFloor) ) return;
+		// calc jump height from velocity
+		double tmp = 100*Math.abs(velocity);
+		if (Math.abs(tmp) > k) tmp = k; 
+		tmp = -tmp;
+		System.out.println(tmp);
+		int dy = (int) (Math.ceil(tmp));
+		System.out.println("dy is: " + dy);
+		moveLocation(0, dy);
+	}
+
 	public void move() {
 
 		if (isMoving) {
@@ -140,6 +196,7 @@ public class Soldier implements ShapeListener {
 			//System.out.println(location.y);
 			if (location.y >= 500) {
 				location.y = 500;
+				isOnStair = true;
 			}
 			// After changing the soldier self location, move also its image in the canvas
 			// accordingly.

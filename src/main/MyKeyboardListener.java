@@ -60,7 +60,8 @@ public class MyKeyboardListener extends KeyboardListener{
 
 	@Override
 	public void wKeyPressed() {
-		myContent.soldier().moveLocation(0, -50);
+		//myContent.soldier().moveLocation(0, -50);
+		myContent.soldier().jump();
 		System.out.println("w key pressed.");
 	}
 
@@ -84,5 +85,17 @@ public class MyKeyboardListener extends KeyboardListener{
 	
 	public void otherKeyPressed(KeyEvent e) {
 		System.out.println("other key pressed. type:" + e);
+	}
+
+	@Override
+	public void kKeyPressed() {
+		myContent.soldier().updateVelocity(-5);
+		System.out.println("K key pressed");
+	}
+
+	@Override
+	public void lKeyPressed() {
+		myContent.soldier().updateVelocity(5);
+		System.out.println("L key pressed");
 	}
 }

@@ -3,6 +3,7 @@ package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 public class KeyboardListener {
 	public enum Direction {
@@ -20,7 +21,6 @@ public class KeyboardListener {
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
-
 		}
 
 		@Override
@@ -50,6 +50,12 @@ public class KeyboardListener {
 			case KeyEvent.VK_S:
 				sKeyPressed();
 				break;
+			case KeyEvent.VK_L:
+				lKeyPressed();
+				break;
+			case KeyEvent.VK_K:
+				kKeyPressed();
+				break;
 			default:
 				// TODO: add more keys
 				break;
@@ -67,7 +73,7 @@ public class KeyboardListener {
 	// buttons
 	public void directionalKeyPressed(Direction direction) {
 	}
-
+	
 	// This function is a placeholder and should be overridden in derived specific
 	// buttons
 	public void characterTyped(char c) {
@@ -100,6 +106,12 @@ public class KeyboardListener {
 	// This function is a placeholder and should be overridden in derived specific
 		// buttons
 	public void otherKeyPressed(KeyEvent e) {
+	}
+
+	public void lKeyPressed() {
+	}
+
+	public void kKeyPressed() {
 	}
 	
 }

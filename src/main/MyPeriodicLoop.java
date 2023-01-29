@@ -45,7 +45,7 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	}
 
 	private void redrawSoldier() {
-		content.soldier().move();
+		content.soldier().move_new();
 		GameCanvas canvas = Game.UI().canvas();
 		int maxHeight = canvas.getBounds().height;
 		int maxWidth = canvas.getBounds().width;

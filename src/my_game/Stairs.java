@@ -19,7 +19,7 @@ public class Stairs {
             int x = points[i].getX();
             int y = points[i].getY();
             int width = (int) Math.max(400 * Math.random(), 150);
-            width = Math.min(width, 200);
+            width = Math.min(width, 400);
             int height = stairsHeight;
             String id = Integer.toString(i);
             visStairs[i] = (Rectangle) new Rectangle(id, x, y, width, height);
