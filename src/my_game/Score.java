@@ -10,21 +10,35 @@ public class Score {
     private int score = 0;
     private int posX = 50;
 	private int posY = 50;
-    private Text t1;
-    private String id;
+    private Text scoreText, timeText;
+    private String scoreId, timeId;
+    private long currTime = 0;
 
     public void addToCanvas() {
 		GameCanvas canvas = Game.UI().canvas();
-        id = "t1";
-		t1 = new Text(id, getScoreString(), posX, posY);
-		t1.setColor(Color.GREEN);
-		t1.setFontName("Helvetica");
-		t1.setFontSize(30);
-		canvas.addShape(t1);
+        scoreId = "scorid";
+		scoreText = new Text(scoreId, getScoreString(), posX, posY);
+		scoreText.setColor(Color.GREEN);
+		scoreText.setFontName("Helvetica");
+		scoreText.setFontSize(30);
+		canvas.addShape(scoreText);
+
+        timeId = "timeid";
+        timeText = new Text(timeId, getTimeString(), posX, posY + posY);
+		timeText.setColor(Color.GREEN);
+		timeText.setFontName("Helvetica");
+		timeText.setFontSize(30);
+		canvas.addShape(timeText);
+
 	}
 
     public String getScoreString(){
         return "Score : " + Integer.toString(score);
+    }
+
+    public String getTimeString(){
+        System.out.println("Time : " + Long.toString(currTime/1000));
+        return "Time : " + Long.toString(currTime/1000);
     }
 
     public int getScore(){
@@ -33,7 +47,13 @@ public class Score {
 
     public void updateScore(int score){
         this.score = score;
-        t1.setText(getScoreString());
+        scoreText.setText(getScoreString());
+    }
+
+    public void updateTime(){
+        this.currTime = PeriodicLoop.elapsedTime();
+        timeText.setText(getTimeString());
+        //System.out.println(this.currTime);
     }
     
 }

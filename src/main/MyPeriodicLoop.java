@@ -51,7 +51,7 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	}
 
 	private void redrawSoldier() {
-		content.soldier().move_new();
+		// content.soldier().move_new();
 		GameCanvas canvas = Game.UI().canvas();
 		int maxHeight = canvas.getBounds().height;
 		int maxWidth = canvas.getBounds().width;
@@ -60,7 +60,7 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 100) {
 			content.soldier().moveLocation(0,20);
 			content.stairs().updateStairs(20);
-			content.stairs().printXY();
+			//content.stairs().printXY();
 		}
 		// check on stairs
 		int cur_x = content.soldier().getLocation().x ;
@@ -75,6 +75,9 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		else content.soldier().setOnStair(false);
 		int d = content.score().getScore() / 10;
 		content.stairs().updateStairs(d);
+		content.soldier().setAddedYvec(d);
+		content.soldier().move_new();
+		content.score().updateTime();
 	}
 
 	private void isGameOver(){

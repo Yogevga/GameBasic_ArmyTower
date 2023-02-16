@@ -15,7 +15,7 @@ public class Soldier implements ShapeListener {
 		UP(0, -10),
 		DOWN(0, 10);
 
-		private final int xVec, yVec;
+		private int xVec, yVec;
 
 		private Direction(int xVec, int yVec) {
 			this.xVec = xVec;
@@ -37,6 +37,7 @@ public class Soldier implements ShapeListener {
 	private int velocity = 0;
 	private int velocityPolicy = 0;
 	private int friction = 3;
+	private int addedYvec = 0;
 
 	private final String[] images = { "resources/soldier1.png" };
 	private int imageIndex = 0;
@@ -69,6 +70,10 @@ public class Soldier implements ShapeListener {
 
 	public void setDirectionPolicy(Direction direction) {
 		directionPolicy = direction;
+	}
+
+	public void setAddedYvec(int dy){
+		this.addedYvec = dy;
 	}
 
 	public void switchDirectionPolicy() {
@@ -163,10 +168,12 @@ public class Soldier implements ShapeListener {
 			dx = velocity + friction;
 		} else dx = 0;
 		
-		Point desired = new Point(location.x + dx, location.y + directionPolicy.yVec());
+		Point desired = new Point(location.x + dx, location.y + directionPolicy.yVec() + addedYvec);
 		
 		if (!isOnStair) {
 			location.y = desired.y;
+		} else {
+			location.y += addedYvec; 
 		}	
 
 		if (location.y >= 500) {

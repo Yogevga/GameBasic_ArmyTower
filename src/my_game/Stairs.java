@@ -93,7 +93,6 @@ public class Stairs {
         for (int i = 0; i < visStairs.length; i++) {
             canvas.addShape(visStairs[i]);
         }
-
     }
 
     public int checkPointOnStairs(Point point) {
