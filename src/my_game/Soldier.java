@@ -134,12 +134,13 @@ public class Soldier implements ShapeListener {
 	}
 
 	public void updateVelocity(String v){
+		int acc = 10;
 		//this.velocity += dv;
 		if (v=="goLEFT") {
-			this.velocityPolicy = -5;
+			this.velocityPolicy = -acc;
 		}
 		else if (v=="goRIGHT") {
-			this.velocityPolicy = 5;
+			this.velocityPolicy = acc;
 		} else if (v=="abort"){
 			this.velocityPolicy = 0;
 		}

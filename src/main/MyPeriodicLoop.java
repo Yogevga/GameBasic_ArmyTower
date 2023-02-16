@@ -13,6 +13,7 @@ import my_game.Score;
 import shapes.Shape;
 import shapes.Text;
 import java.awt.Color;
+import java.lang.Math;
 
 
 public class MyPeriodicLoop extends PeriodicLoop {
@@ -72,6 +73,8 @@ public class MyPeriodicLoop extends PeriodicLoop {
 			content.score().updateScore(content.stairs().getStairsCount());
 		}
 		else content.soldier().setOnStair(false);
+		int d = content.score().getScore() / 10;
+		content.stairs().updateStairs(d);
 	}
 
 	private void isGameOver(){
