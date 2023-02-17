@@ -61,11 +61,11 @@ public class Stairs {
     }
 
     private int maxStairHeight(){
-        int minHeight = Integer.MAX_VALUE;
+        int minStairYpos = Integer.MAX_VALUE;
         for (int i = 0; i < visStairs.length; i++) {
-            if (visStairs[i].getPosY() < minHeight) minHeight = visStairs[i].getPosY();
+            if (visStairs[i].getPosY() < minStairYpos) minStairYpos = visStairs[i].getPosY();
         }
-        return minHeight;
+        return minStairYpos;
     }
 
     public void updateToCanvas() {
