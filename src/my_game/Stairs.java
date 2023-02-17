@@ -2,8 +2,6 @@ package my_game;
 
 import java.awt.Color;
 
-import javax.swing.text.AbstractDocument.Content;
-
 import game.Game;
 import gui.GameCanvas;
 import shapes.Rectangle;
@@ -41,7 +39,6 @@ public class Stairs {
             // String id = Integer.toString(i);
             // canvas.moveShape(id, 0, dy);
         }
-
     }
 
     public int getStairsCount() {
@@ -51,16 +48,24 @@ public class Stairs {
     public void removeOldStairs() {
         GameCanvas canvas = Game.UI().canvas();
         for (int i = 0; i < visStairs.length; i++) {
-            if (visStairs[i].getPosY() > 700) {
+            if (visStairs[i].getPosY() > 600) {
                 String id = Integer.toString(i);
                 int x = (int) (850 * Math.random());
-                int y = 100;
+                int y = maxStairHeight() - 100;
                 Point point = new Point(x, y);
                 visStairs[i].moveToLocation(x, y);
                 System.out.println("Moved Stair " + id + " to " + point.toString());
                 stairsCount++;
             }
         }
+    }
+
+    private int maxStairHeight(){
+        int minHeight = Integer.MAX_VALUE;
+        for (int i = 0; i < visStairs.length; i++) {
+            if (visStairs[i].getPosY() < minHeight) minHeight = visStairs[i].getPosY();
+        }
+        return minHeight;
     }
 
     public void updateToCanvas() {
