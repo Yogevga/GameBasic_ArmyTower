@@ -20,7 +20,12 @@ public class GamePlay {
 	}
 
 	private void handleStage() {
-		stage = content.score().getScore() / 10;
+		if (! (stage == content.score().getScore() / 10)) {
+			stage = content.score().getScore() / 10;
+			content.stairs().decreaseMaxStairWidth();
+		}
+
+		
 	}
 
 	private void handleSoldier() {

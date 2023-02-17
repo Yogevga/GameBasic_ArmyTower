@@ -7,24 +7,36 @@ import gui.GameCanvas;
 import shapes.Rectangle;
 
 public class Stairs {
+
+    private int MAX_WIDTH = 400;
+    private final int MIN_WIDTH = 150;
     private Rectangle visStairs[];
     private int stairsCount = 0;
-    private int stairsHeight = 20;
+    private final int STAIR_HEIGHT = 20;
 
     public Stairs(Point[] points) {
         visStairs = new Rectangle[points.length];
         for (int i = 0; i < points.length; i++) {
             int x = points[i].getX();
             int y = points[i].getY();
-            int width = (int) Math.max(400 * Math.random(), 150);
-            width = Math.min(width, 400);
-            int height = stairsHeight;
+            int width = generateWidth();
+            int height = STAIR_HEIGHT;
             String id = Integer.toString(i);
             visStairs[i] = (Rectangle) new Rectangle(id, x, y, width, height);
             visStairs[i].setIsFilled(true);
             visStairs[i].setFillColor(Color.blue);
             stairsCount++;
         }
+    }
+
+    private int generateWidth() {
+        int width = MIN_WIDTH + (int)( (MAX_WIDTH - MIN_WIDTH) * Math.random() );
+        return width;
+    }
+
+    public void decreaseMaxStairWidth(){
+        this.MAX_WIDTH -= 20;
+        if (this.MAX_WIDTH < MIN_WIDTH) MAX_WIDTH = MIN_WIDTH;
     }
 
     public void updateStairs(int dy) {
@@ -54,6 +66,7 @@ public class Stairs {
                 int y = maxStairHeight() - 100;
                 Point point = new Point(x, y);
                 visStairs[i].moveToLocation(x, y);
+                visStairs[i].setWidth(generateWidth());
                 System.out.println("Moved Stair " + id + " to " + point.toString());
                 stairsCount++;
             }
@@ -68,39 +81,11 @@ public class Stairs {
         return minStairYpos;
     }
 
-    public void updateToCanvas() {
-        GameCanvas canvas = Game.UI().canvas();
-        for (int i = 0; i < visStairs.length; i++) {
-            String id = Integer.toString(i);
-            canvas.deleteShape(id);
-            canvas.addShape(visStairs[i]);
-        }
-    }
-
     public void addToCanvas() {
         GameCanvas canvas = Game.UI().canvas();
         for (int i = 0; i < visStairs.length; i++) {
             canvas.addShape(visStairs[i]);
         }
-    }
-
-    public int checkPointOnStairs2(Point point) {
-        int stairNum = -1;
-        for (int index = 0; index < visStairs.length; index++) {
-            Rectangle tmp = visStairs[index];
-            if (tmp.getPosX() < (point.x) && tmp.getPosX() + tmp.getWidth() > (point.x)) // check on X
-            {
-                // System.out.println( "tmp.y = " + tmp.getPosY() + ","+ (point.y+200) + " =
-                // point y, ");
-                boolean b = (tmp.getPosY() > (point.y + 200) && (tmp.getPosY() - tmp.getHeight()) < (point.y + 200));
-                System.out.println(b + " " + tmp.isInArea(point.x, point.y));
-                if (b) {
-                    stairNum = index;
-                    return stairNum;
-                }
-            }
-        }
-        return stairNum;
     }
 
     public int checkPointOnStairs(Point point) {
