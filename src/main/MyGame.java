@@ -12,6 +12,7 @@ import buttons.CircleDragButton;
 import buttons.EditPolygonButton;
 import buttons.MusicButton;
 import buttons.RotatePolygonButton;
+import my_game.GamePlay;
 import my_game.Pokimon;
 import my_game.Score;
 import my_game.Soldier;

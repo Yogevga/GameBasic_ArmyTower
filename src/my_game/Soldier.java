@@ -38,6 +38,8 @@ public class Soldier implements ShapeListener {
 	private int velocityPolicy = 0;
 	private int friction = 3;
 	private int addedYvec = 0;
+	private int soldierImageWidth = 220;
+	private int soldierImageHeight = 220;
 
 	private final String[] images = { "resources/soldier1.png" };
 	private int imageIndex = 0;
@@ -49,7 +51,7 @@ public class Soldier implements ShapeListener {
 
 	public void addToCanvas() {
 		GameCanvas canvas = Game.UI().canvas();
-		Image image = new Image(getImageID(), getImageName(), 220, 200, 600, 600);
+		Image image = new Image(getImageID(), getImageName(), soldierImageWidth, soldierImageHeight, 600, 600);
 		image.setShapeListener(this);
 		image.setzOrder(3);
 		canvas.addShape(image);
@@ -57,6 +59,10 @@ public class Soldier implements ShapeListener {
 
 	public Point getLocation() {
 		return this.location;
+	}
+
+	public Point getCenterLocation(){
+		return (new Point(this.location.x + (int)(soldierImageWidth/2), location.y + (int)(soldierImageHeight)));
 	}
 
 	public void setLocation(Point location) {

@@ -37,7 +37,7 @@ public class Score {
     }
 
     public String getTimeString(){
-        System.out.println("Time : " + Long.toString(currTime/1000));
+        //System.out.println("Time : " + Long.toString(currTime/1000));
         return "Time : " + Long.toString(currTime/1000);
     }
 
