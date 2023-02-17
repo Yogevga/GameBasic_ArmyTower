@@ -62,7 +62,7 @@ public class Soldier implements ShapeListener {
 	}
 
 	public Point getCenterLocation(){
-		return (new Point(this.location.x + (int)(soldierImageWidth/2), location.y + (int)(soldierImageHeight)));
+		return (new Point(this.location.x + (int)(soldierImageWidth/2), location.y + (int)(soldierImageHeight - 10)));
 	}
 
 	public void setLocation(Point location) {

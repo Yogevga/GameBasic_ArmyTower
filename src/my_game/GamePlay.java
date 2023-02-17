@@ -1,44 +1,22 @@
 package my_game;
 
 import game.Game;
-import game.PeriodicLoop;
 import gui.GameCanvas;
-import gui.Sleeper;
 import main.MyContent;
-import my_game.MyCharacter;
-import my_game.Point;
-import my_game.Pokimon;
-import my_game.Soldier;
-import my_game.Stairs;
-import my_game.Score;
-import shapes.Shape;
 import shapes.Text;
 import java.awt.Color;
-import java.lang.Math;
 
 public class GamePlay {
-    public int stage;
+	private int stage = 0;
     private MyContent content;
-	private boolean overlap_flag = false;
-	private int counter = 0;
-
-    public void setContent(MyContent content) {
-		this.content = content;
-	}
 
     public void handleGamePlay(MyContent content){
         this.content = content;
         handleSoldier();
+		handleStairs();
+		handleScore();
         isGameOver();
     }
-
-    public void handleStairs(){
-        
-    };
-
-    public void handleScore(){
-        
-    };
 
     private void handleSoldier() {
 		GameCanvas canvas = Game.UI().canvas();
@@ -58,13 +36,19 @@ public class GamePlay {
 			content.soldier().setOnStair(true);	
 		}
 		else content.soldier().setOnStair(false);
-		content.score().updateScore(content.stairs().getStairsCount());
-		int d = content.score().getScore() / 10;
-		content.stairs().updateStairs(d);
-		content.soldier().setAddedYvec(d);
+		content.soldier().setAddedYvec(stage);
 		content.soldier().move_new();
-		content.score().updateTime();
 	}
+
+	public void handleStairs(){
+		content.stairs().updateStairs(stage);
+    };
+
+    public void handleScore(){
+		stage = content.score().getScore() / 10;
+		content.score().updateScore(content.stairs().getStairsCount());
+		content.score().updateTime();        
+    };
 
 	private void isGameOver(){
 		int scoreThres = 8; //after getting to stair #8, it will be possible to GameOver
@@ -82,6 +66,5 @@ public class GamePlay {
 			}
 		}
 	}
-
 
 }
