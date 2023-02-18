@@ -33,10 +33,6 @@ public class MyGame extends Game {
 
 		Soldier soldier = content.soldier();
 		soldier.addToCanvas();
-		// Image image = new Image(soldier.getImageID(), soldier.getImageName(), 220, 220, 773, 580);
-		// image.setShapeListener(soldier);
-		// image.setzOrder(3);
-		// canvas.addShape(image);
 
 		Stairs stairs = content.stairs();
 		stairs.addToCanvas();

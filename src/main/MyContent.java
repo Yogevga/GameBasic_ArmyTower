@@ -5,13 +5,11 @@ import my_game.Score;
 import my_game.Soldier;
 import my_game.Stairs;
 import my_game.GamePlay;
-import my_game.MyCharacter;
 import my_game.MyPolygon;
 import my_game.Point;
 
 public class MyContent extends GameContent {
 	private MyPolygon myPolygon;
-	private MyCharacter pokeball;
 	private Soldier soldier;
 	private Stairs stairs;
 	private Score score;
@@ -34,10 +32,6 @@ public class MyContent extends GameContent {
 
 	public Soldier soldier() {
 		return soldier;
-	}
-
-	public MyCharacter pokeball() {
-		return pokeball;
 	}
 
 	public MyPolygon polygon() {
