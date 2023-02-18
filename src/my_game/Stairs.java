@@ -2,8 +2,6 @@ package my_game;
 
 import java.awt.Color;
 
-import javax.swing.text.AttributeSet.ColorAttribute;
-
 import game.Game;
 import gui.GameCanvas;
 import shapes.Rectangle;

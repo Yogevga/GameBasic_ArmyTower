@@ -19,13 +19,6 @@ public class AddButton extends GameButton {
 		super.buttonAction();
 		MyContent content = (MyContent) Game.Content();
 		GameCanvas canvas = Game.UI().canvas();
-
-		try {
-			canvas.deleteShape(content.pokeball().getImageID());
-		} catch (Exception e) {
-			System.out.println("no pokeball yet..");
-		}
-		content.addCharacter();
 	}
 
 }

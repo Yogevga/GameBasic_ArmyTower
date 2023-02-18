@@ -32,10 +32,11 @@ public class MyGame extends Game {
 		canvas.setBackgroundImage("resources/wall1.jpg");
 
 		Soldier soldier = content.soldier();
-		Image image = new Image(soldier.getImageID(), soldier.getImageName(), 220,220, 773, 580);
-		image.setShapeListener(soldier);
-		image.setzOrder(3);
-		canvas.addShape(image);
+		soldier.addToCanvas();
+		// Image image = new Image(soldier.getImageID(), soldier.getImageName(), 220, 220, 773, 580);
+		// image.setShapeListener(soldier);
+		// image.setzOrder(3);
+		// canvas.addShape(image);
 
 		Stairs stairs = content.stairs();
 		stairs.addToCanvas();
@@ -43,9 +44,6 @@ public class MyGame extends Game {
 		Score score = content.score();
 		score.addToCanvas();
 
-		//Circle c = new Circle("circle", 300, 300, 50);
-		//c.setDraggable(false);
-		//canvas.addShape(c);
 	}
 	
 	@Override
@@ -61,7 +59,6 @@ public class MyGame extends Game {
 
 		// Add a the Circle drag button
 		dashboard.addButton(new CircleDragButton("dragButton", "Drag", 280, 40));
-
 
 		// Add a the AddButton button
 		dashboard.addButton(new AddButton("addButton", "Add", 540, 40));
