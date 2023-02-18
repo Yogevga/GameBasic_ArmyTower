@@ -4,7 +4,6 @@ package my_game;
 import game.ShapeListener;
 import gui.GameCanvas;
 import game.Game;
-import game.PeriodicLoop;
 import shapes.Image;
 
 public class Soldier implements ShapeListener {

@@ -2,6 +2,8 @@ package my_game;
 
 import java.awt.Color;
 
+import javax.swing.text.AttributeSet.ColorAttribute;
+
 import game.Game;
 import gui.GameCanvas;
 import shapes.Rectangle;
@@ -13,9 +15,14 @@ public class Stairs {
     private Rectangle visStairs[];
     private int stairsCount = 0;
     private final int STAIR_HEIGHT = 20;
+    private Color[] stairColors = {
+        Color.CYAN,Color.BLUE,Color.GREEN,Color.MAGENTA
+    };
+    private int currColor = 0;
 
     public Stairs(Point[] points) {
         visStairs = new Rectangle[points.length];
+        Color c = getColor();
         for (int i = 0; i < points.length; i++) {
             int x = points[i].getX();
             int y = points[i].getY();
@@ -24,8 +31,20 @@ public class Stairs {
             String id = Integer.toString(i);
             visStairs[i] = (Rectangle) new Rectangle(id, x, y, width, height);
             visStairs[i].setIsFilled(true);
-            visStairs[i].setFillColor(Color.blue);
+            visStairs[i].setFillColor(c);
             stairsCount++;
+        }
+    }
+
+    private Color getColor() {
+        currColor = (currColor+1) % stairColors.length;
+        return stairColors[currColor];
+    }
+
+    public void updateColor(){
+        Color c = getColor();
+        for (int i = 0; i < visStairs.length; i++) {
+            visStairs[i].setFillColor(c);;
         }
     }
 
@@ -79,6 +98,16 @@ public class Stairs {
             if (visStairs[i].getPosY() < minStairYpos) minStairYpos = visStairs[i].getPosY();
         }
         return minStairYpos;
+    }
+
+    public void changeStairsColor(){
+        for (int i = 0; i < visStairs.length; i++) {
+            visStairs[i].setColor(getNextColor());
+        }
+    }
+
+    private Color getNextColor() {
+        return null;
     }
 
     public void addToCanvas() {

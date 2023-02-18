@@ -24,8 +24,7 @@ public class GamePlay {
 			stage = content.score().getScore() / 10;
 			content.stairs().decreaseMaxStairWidth();
 		}
-
-		
+		if (content.score().getScore() > 0 && content.score().getScore() % 20 == 0) content.stairs().updateColor();;
 	}
 
 	private void handleSoldier() {
