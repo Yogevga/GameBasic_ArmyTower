@@ -40,7 +40,7 @@ public class Soldier implements ShapeListener {
 	private int soldierImageWidth = 220;
 	private int soldierImageHeight = 220;
 
-	private final String[] images = { "resources/soldier1.png" };
+	private final String[] images = { "resources/HAROLD_SOLDIER.png" };
 	private int imageIndex = 0;
 	private final String imageID = "soldier";
 	private boolean isMoving = true;

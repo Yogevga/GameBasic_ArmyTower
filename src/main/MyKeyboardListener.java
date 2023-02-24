@@ -1,8 +1,6 @@
 package main;
-
-import my_game.Pokimon;
+import game.Game;
 import my_game.Soldier;
-import my_game.MyCharacter;
 import java.awt.event.KeyEvent;
 
 import game.KeyboardListener;
@@ -47,7 +45,7 @@ public class MyKeyboardListener extends KeyboardListener{
 	
 	@Override
 	public void aKeyPressed() {
-		//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.LEFT);
+		Game.audioPlayer().play("resources/audio/Zahal.wav", 0);
 		System.out.println("a key pressed.");
 	}
 
@@ -103,6 +101,7 @@ public class MyKeyboardListener extends KeyboardListener{
 		myContent.soldier().updateVelocity("goRIGHT");
 		System.out.println("L key pressed");
 	}
+	
 
 	@Override
 	public void lKeyReleased(){

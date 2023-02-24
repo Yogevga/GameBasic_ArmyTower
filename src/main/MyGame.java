@@ -17,6 +17,7 @@ import my_game.Pokimon;
 import my_game.Score;
 import my_game.Soldier;
 import my_game.Stairs;
+import my_game.Rank;
 import shapes.Circle;
 import shapes.Image;
 
@@ -39,6 +40,9 @@ public class MyGame extends Game {
 
 		Score score = content.score();
 		score.addToCanvas();
+
+		Rank rank = content.rank();
+		rank.addToCanvas();
 
 	}
 	

@@ -2,6 +2,7 @@ package main;
 
 import game.GameContent;
 import my_game.Score;
+import my_game.Rank;
 import my_game.Soldier;
 import my_game.Stairs;
 import my_game.GamePlay;
@@ -13,7 +14,9 @@ public class MyContent extends GameContent {
 	private Soldier soldier;
 	private Stairs stairs;
 	private Score score;
-	private GamePlay gameplay;
+	private Rank rank;
+		private GamePlay gameplay;
+		
 
 	@Override
 	public void initContent() {
@@ -25,6 +28,8 @@ public class MyContent extends GameContent {
 
 		stairs = new Stairs(points);
 		score = new Score();
+		rank = new Rank();
+		rank.setLocation(new Point(660, 550));
 		soldier = new Soldier();
 		soldier.setLocation(new Point(660, 550));
 		gameplay = new GamePlay();
@@ -48,5 +53,8 @@ public class MyContent extends GameContent {
 
 	public Score score() {
 		return score;
+	}
+	public Rank rank() {
+		return rank;
 	}
 }

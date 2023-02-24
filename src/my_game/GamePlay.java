@@ -5,6 +5,7 @@ import gui.GameCanvas;
 import main.MyContent;
 import shapes.Text;
 import java.awt.Color;
+import game.AudioPlayer.MusicStatus;
 
 public class GamePlay {
 	private int stage = 0;
@@ -16,7 +17,9 @@ public class GamePlay {
 		handleStairs();
 		handleStage();
 		handleScore();
+		//handleRank();
 		isGameOver();
+		//music();
 	}
 
 	private void handleStage() {
@@ -57,6 +60,10 @@ public class GamePlay {
 		content.score().updateTime();
 	};
 
+	//public void handleRank() {
+	//	content.rank().updateRank(content.stairs().getStairsCount());
+	//};
+
 	private void isGameOver() {
 		int scoreThres = 8; // after getting to stair #8, it will be possible to GameOver
 		int y_thres = 500;
@@ -67,9 +74,11 @@ public class GamePlay {
 				GameCanvas canvas = Game.UI().canvas();
 				Text t1 = new Text("gameover", "GAME_OVER", 300, 500);
 				t1.setColor(Color.RED);
-				t1.setFontName("Helvetica");
+				t1.setFontName("Palatino");
 				t1.setFontSize(100);
 				canvas.addShape(t1);
+				Game.audioPlayer().stop();
+				
 			}
 		}
 	}
