@@ -17,17 +17,19 @@ public class GamePlay {
 		handleStairs();
 		handleStage();
 		handleScore();
-		//handleRank();
+		handleRank();
 		isGameOver();
-		//music();
+		// music();
 	}
 
 	private void handleStage() {
-		if (! (stage == content.score().getScore() / 10)) {
+		if (!(stage == content.score().getScore() / 10)) {
 			stage = content.score().getScore() / 10;
 			content.stairs().decreaseMaxStairWidth();
 		}
-		if (content.score().getScore() > 0 && content.score().getScore() % 20 == 0) content.stairs().updateColor();;
+		if (content.score().getScore() > 0 && content.score().getScore() % 20 == 0)
+			content.stairs().updateColor();
+		;
 	}
 
 	private void handleSoldier() {
@@ -60,9 +62,9 @@ public class GamePlay {
 		content.score().updateTime();
 	};
 
-	//public void handleRank() {
-	//	content.rank().updateRank(content.stairs().getStairsCount());
-	//};
+	public void handleRank() {
+		content.rank().updateRank(stage);
+	};
 
 	private void isGameOver() {
 		int scoreThres = 8; // after getting to stair #8, it will be possible to GameOver
@@ -78,7 +80,7 @@ public class GamePlay {
 				t1.setFontSize(100);
 				canvas.addShape(t1);
 				Game.audioPlayer().stop();
-				
+
 			}
 		}
 	}
