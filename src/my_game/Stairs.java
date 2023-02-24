@@ -4,13 +4,12 @@ import java.awt.Color;
 
 import game.Game;
 import gui.GameCanvas;
-import shapes.Rectangle;
 
 public class Stairs {
 
     private int MAX_WIDTH = 400;
     private final int MIN_WIDTH = 150;
-    private Rectangle visStairs[];
+    private Floor visStairs[];
     private int stairsCount = 0;
     private final int STAIR_HEIGHT = 20;
     private Color[] stairColors = {
@@ -19,7 +18,7 @@ public class Stairs {
     private int currColor = 0;
 
     public Stairs(Point[] points) {
-        visStairs = new Rectangle[points.length];
+        visStairs = new Floor[points.length];
         Color c = getColor();
         for (int i = 0; i < points.length; i++) {
             int x = points[i].getX();
@@ -27,7 +26,7 @@ public class Stairs {
             int width = generateWidth();
             int height = STAIR_HEIGHT;
             String id = Integer.toString(i);
-            visStairs[i] = (Rectangle) new Rectangle(id, x, y, width, height);
+            visStairs[i] = (Floor) new Floor(id, x, y, width, height);
             visStairs[i].setIsFilled(true);
             visStairs[i].setFillColor(c);
             stairsCount++;
@@ -118,7 +117,7 @@ public class Stairs {
     public int checkPointOnStairs(Point point) {
         int stairNum = -1;
         for (int index = 0; index < visStairs.length; index++) {
-            Rectangle tmp = visStairs[index];
+            Floor tmp = visStairs[index];
             if (tmp.isInArea(point.x, point.y)) {
                 stairNum = index;
                 return stairNum;
@@ -135,7 +134,7 @@ public class Stairs {
             str += Integer.toString(visStairs[i].getPosY());
             str += " , Canvas: ";
             String id = Integer.toString(i);
-            Rectangle r = (Rectangle) (canvas.getShape(id));
+            Floor r = (Floor) (canvas.getShape(id));
             str += Integer.toString(r.getPosX());
             str += " ,";
             str += Integer.toString(r.getPosY());
@@ -143,5 +142,4 @@ public class Stairs {
         }
         System.out.println("--");
     }
-
 }
