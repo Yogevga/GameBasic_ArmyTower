@@ -45,7 +45,8 @@ public class MyKeyboardListener extends KeyboardListener{
 	
 	@Override
 	public void aKeyPressed() {
-		Game.audioPlayer().play("resources/audio/Zahal.wav", 0);
+		//Game.audioPlayer().play("resources/audio/Zahal.wav", 0);
+		myContent.gamePlay().changSetUp();
 		System.out.println("a key pressed.");
 	}
 

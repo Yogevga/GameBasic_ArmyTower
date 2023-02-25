@@ -5,7 +5,6 @@ import gui.GameCanvas;
 import main.MyContent;
 import shapes.Text;
 import java.awt.Color;
-import game.AudioPlayer.MusicStatus;
 
 public class GamePlay {
 	private int stage = 0;
@@ -89,8 +88,6 @@ public class GamePlay {
 
 	public void changSetUp()
 	{
-		//content.soldier().nextImage();
-		
 		imageIndex++;
 		imageIndex = imageIndex % backGroudImages.length;
 		Game.UI().canvas().setBackgroundImage(backGroudImages[imageIndex]);
