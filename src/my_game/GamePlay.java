@@ -30,7 +30,7 @@ public class GamePlay {
 			stage = content.score().getScore() / 10;
 			content.stairs().decreaseMaxStairWidth();
 		}
-		if (content.score().getScore() > 0 && content.score().getScore() % 20 == 0)
+		if (content.score().getScore() > 0 && content.score().getScore() % 10 == 0)
 			content.stairs().updateColor();
 		;
 	}
@@ -83,7 +83,6 @@ public class GamePlay {
 				t1.setFontSize(100);
 				canvas.addShape(t1);
 				Game.audioPlayer().stop();
-
 			}
 		}
 	}
