@@ -40,7 +40,7 @@ public class Soldier implements ShapeListener {
 	private int soldierImageWidth = 220;
 	private int soldierImageHeight = 220;
 
-	private final String[] images = { "resources/HAROLD_SOLDIER.png" };
+	private final String[] images = { "resources/HAROLD_SOLDIER.png", "resources/soldier1.png" };
 	private int imageIndex = 0;
 	private final String imageID = "soldier";
 	private boolean isMoving = true;
@@ -118,12 +118,19 @@ public class Soldier implements ShapeListener {
 		i.setRotation(rotation);
 	}
 
+	public void nextImage(){
+		this.imageIndex++;
+		this.imageIndex = this.imageIndex % images.length;
+		setImage(imageIndex);
+	}
+
 	public void setImage(int index) {
-		this.imageIndex = index;
-		if (imageIndex == 0) {
-			Game.UI().canvas().changeImage(imageID, getImageName(), 220, 200);
-		} else {
-			Game.UI().canvas().changeImage(imageID, getImageName(), 260, 195);
+		//this.imageIndex = index;
+		for (int i = 0; i < images.length; i++) {
+			if (this.imageIndex == i){
+				Game.UI().canvas().changeImage(imageID, getImageName(), soldierImageWidth, soldierImageHeight);
+				break;
+			}
 		}
 	}
 
@@ -154,7 +161,7 @@ public class Soldier implements ShapeListener {
 		} else if (v=="abort"){
 			this.velocityPolicy = 0;
 		}
-		System.out.println(velocity);
+		//System.out.println(velocity);
 	}
 
 	public void move_new() {
@@ -198,9 +205,9 @@ public class Soldier implements ShapeListener {
 		double tmp = 100*Math.abs(velocity);
 		if (Math.abs(tmp) > k) tmp = k; 
 		tmp = -tmp;
-		System.out.println(tmp);
+		//System.out.println(tmp);
 		int dy = (int) (Math.ceil(tmp));
-		System.out.println("dy is: " + dy);
+		//System.out.println("dy is: " + dy);
 		moveLocation(0, dy);
 	}
 

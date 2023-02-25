@@ -3,6 +3,7 @@ package buttons;
 import game.Game;
 import gui.GameCanvas;
 import main.MyContent;
+import my_game.GamePlay;
 import my_game.Point;
 
 public class ChangeButton extends GameButton {
@@ -19,5 +20,7 @@ public class ChangeButton extends GameButton {
 		// want the printing.
 		super.buttonAction();
 		MyContent content = (MyContent) Game.Content();
+		//content.soldier().nextImage();
+		content.gamePlay().changSetUp();
 	}
 }

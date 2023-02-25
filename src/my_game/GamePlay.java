@@ -10,6 +10,9 @@ import game.AudioPlayer.MusicStatus;
 public class GamePlay {
 	private int stage = 0;
 	private MyContent content;
+	private final String[] backGroudImages = { "resources/wall2.jpg", "resources/wall1.jpg" };
+	private int imageIndex = 0;
+	//private final String imageID = "backgroundimage";
 
 	public void handleGamePlay(MyContent content) {
 		this.content = content;
@@ -85,4 +88,14 @@ public class GamePlay {
 		}
 	}
 
+	public void changSetUp()
+	{
+		//content.soldier().nextImage();
+		
+		imageIndex++;
+		imageIndex = imageIndex % backGroudImages.length;
+		Game.UI().canvas().setBackgroundImage(backGroudImages[imageIndex]);
+		content.soldier().nextImage();
+		content.stairs().updateColor();
+	}
 }

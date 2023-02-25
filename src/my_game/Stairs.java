@@ -13,7 +13,7 @@ public class Stairs {
     private int stairsCount = 0;
     private final int STAIR_HEIGHT = 20;
     private Color[] stairColors = {
-        Color.CYAN,Color.BLUE,Color.GREEN,Color.MAGENTA
+        Color.CYAN,Color.BLUE,Color.BLACK,Color.GREEN,Color.MAGENTA
     };
     private int currColor = 0;
 
@@ -42,6 +42,12 @@ public class Stairs {
         Color c = getColor();
         for (int i = 0; i < visStairs.length; i++) {
             visStairs[i].setFillColor(c);;
+        }
+    }
+
+    public void changeStairsColor(){
+        for (int i = 0; i < visStairs.length; i++) {
+            visStairs[i].setColor(getNextColor());
         }
     }
 
@@ -83,7 +89,7 @@ public class Stairs {
                 Point point = new Point(x, y);
                 visStairs[i].moveToLocation(x, y);
                 visStairs[i].setWidth(generateWidth());
-                System.out.println("Moved Stair " + id + " to " + point.toString());
+                //System.out.println("Moved Stair " + id + " to " + point.toString());
                 stairsCount++;
             }
         }
@@ -95,12 +101,6 @@ public class Stairs {
             if (visStairs[i].getPosY() < minStairYpos) minStairYpos = visStairs[i].getPosY();
         }
         return minStairYpos;
-    }
-
-    public void changeStairsColor(){
-        for (int i = 0; i < visStairs.length; i++) {
-            visStairs[i].setColor(getNextColor());
-        }
     }
 
     private Color getNextColor() {
@@ -138,8 +138,8 @@ public class Stairs {
             str += Integer.toString(r.getPosX());
             str += " ,";
             str += Integer.toString(r.getPosY());
-            System.out.println(str);
+            //System.out.println(str);
         }
-        System.out.println("--");
+        //System.out.println("--");
     }
 }

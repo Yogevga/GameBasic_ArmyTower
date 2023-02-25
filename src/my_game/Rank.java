@@ -52,10 +52,9 @@ public class Rank {
     }
 
     public void updateRank(int rank){
-        System.out.println("curr rank: " + rank + "internal rank : " + this.rank);
+        //System.out.println("curr rank: " + rank + "internal rank : " + this.rank);
         if (this.rank == rank) return;
         this.rank = rank;
         setImage(this.rank);
     }
-
 }

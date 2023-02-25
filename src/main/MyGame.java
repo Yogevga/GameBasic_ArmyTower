@@ -30,7 +30,7 @@ public class MyGame extends Game {
 		
 		GameCanvas canvas = gameUI.canvas();
 		canvas.setBackground(Color.WHITE);
-		canvas.setBackgroundImage("resources/wall1.jpg");
+		canvas.setBackgroundImage("resources/wall2.jpg");
 
 		Soldier soldier = content.soldier();
 		soldier.addToCanvas();
@@ -54,18 +54,18 @@ public class MyGame extends Game {
 		dashboard.setBackground(Color.gray);
 		
 		// Add a the Polygon buttons
-		dashboard.addButton(new EditPolygonButton("editButton", "Edit", 60, 40));
-		dashboard.addButton(new RotatePolygonButton("rotateButton", "Rotate", 60, 100));
+		//dashboard.addButton(new EditPolygonButton("editButton", "Edit", 60, 40));
+		//dashboard.addButton(new RotatePolygonButton("rotateButton", "Rotate", 60, 100));
 
 		// Add a the Circle drag button
-		dashboard.addButton(new CircleDragButton("dragButton", "Drag", 280, 40));
+		//dashboard.addButton(new CircleDragButton("dragButton", "Drag", 280, 40));
 
 		// Add a the AddButton button
-		dashboard.addButton(new AddButton("addButton", "Add", 540, 40));
+		//dashboard.addButton(new AddButton("addButton", "Add", 540, 40));
 		
 		//TODO
 		// Add the ChangeButton button to the dashboard
-		dashboard.addButton(new ChangeButton("changeButton", "Change", 540, 100));
+		dashboard.addButton(new ChangeButton("changeButton", "Change", 60, 40));
 		dashboard.addButton(new MusicButton("musicButton", "Play", 700, 40));
 
 	}
@@ -85,6 +85,7 @@ public class MyGame extends Game {
 	
 	public static void main(String[] args) {
 		MyGame game = new MyGame();
+		Game.audioPlayer().play("resources/audio/Himnon_IDF.wav", 0);
 		game.setGameContent(new MyContent());
 		MyPeriodicLoop periodicLoop = new MyPeriodicLoop();
 		periodicLoop.setContent(game.getContent());
