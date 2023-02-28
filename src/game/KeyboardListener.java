@@ -25,11 +25,11 @@ public class KeyboardListener {
 			// TODO Auto-generated method stub
 			otherKeyReleased(e);
 			switch (e.getKeyCode()) {
-				case KeyEvent.VK_RIGHT:
-				directionalKeyReleased(Direction.RIGHT);
-				break;
-				case KeyEvent.VK_LEFT:
-				directionalKeyReleased(Direction.LEFT);
+				// case KeyEvent.VK_RIGHT:
+				// directionalKeyReleased(Direction.RIGHT);
+				// break;
+				// case KeyEvent.VK_LEFT:
+				// directionalKeyReleased(Direction.LEFT);
 				case KeyEvent.VK_K:
 				kKeyReleased();
 				break;
@@ -44,30 +44,30 @@ public class KeyboardListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_RIGHT:
-				directionalKeyPressed(Direction.RIGHT);
-				break;
-			case KeyEvent.VK_LEFT:
-				directionalKeyPressed(Direction.LEFT);
-				break;
-			case KeyEvent.VK_UP:
-				directionalKeyPressed(Direction.UP);
-				break;
-			case KeyEvent.VK_DOWN:
-				directionalKeyPressed(Direction.DOWN);
-				break;
+			// case KeyEvent.VK_RIGHT:
+			// 	directionalKeyPressed(Direction.RIGHT);
+			// 	break;
+			// case KeyEvent.VK_LEFT:
+			// 	directionalKeyPressed(Direction.LEFT);
+			// 	break;
+			// case KeyEvent.VK_UP:
+			// 	directionalKeyPressed(Direction.UP);
+			// 	break;
+			// case KeyEvent.VK_DOWN:
+			// 	directionalKeyPressed(Direction.DOWN);
+			// 	break;
 			case KeyEvent.VK_A:
 				aKeyPressed();
 				break;
-			case KeyEvent.VK_D:
-				dKeyPressed();
-				break;		
+			// case KeyEvent.VK_D:
+			// 	dKeyPressed();
+			// 	break;		
 			case KeyEvent.VK_W:
 				wKeyPressed();
 				break;		
-			case KeyEvent.VK_S:
-				sKeyPressed();
-				break;
+			// case KeyEvent.VK_S:
+			// 	sKeyPressed();
+			// 	break;
 			case KeyEvent.VK_L:
 				lKeyPressed();
 				break;
@@ -102,14 +102,14 @@ public class KeyboardListener {
 	public void aKeyPressed() {
 	}
 
-	public void dKeyPressed() {
-	}
+	// public void dKeyPressed() {
+	// }
 
 	public void wKeyPressed() {
 	}
 
-	public void sKeyPressed() {
-	}
+	// public void sKeyPressed() {
+	// }
 	
 	// This function is a placeholder and should be overridden in derived specific
 	// buttons
@@ -118,8 +118,8 @@ public class KeyboardListener {
 	
 	// This function is a placeholder and should be overridden in derived specific
 	// buttons
-	public void spaceKeyPressed() {
-	}
+	// public void spaceKeyPressed() {
+	// }
 	
 	// This function is a placeholder and should be overridden in derived specific
 		// buttons

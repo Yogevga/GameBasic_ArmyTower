@@ -17,7 +17,12 @@ public class Stairs {
     };
     private int currColor = 0;
 
-    public Stairs(Point[] points) {
+    public Stairs() {
+        Point[] points = new Point[6];
+		for (int i = 0; i < points.length; i++) {
+			int x = (int) (850 * Math.random());
+			points[i] = new Point(x, 100 + 100 * i);
+		}
         visStairs = new Floor[points.length];
         Color c = getColor();
         for (int i = 0; i < points.length; i++) {
@@ -84,7 +89,7 @@ public class Stairs {
         for (int i = 0; i < visStairs.length; i++) {
             if (visStairs[i].getPosY() > 600) {
                 String id = Integer.toString(i);
-                int x = (int) (850 * Math.random());
+                int x = (int) (950 * Math.random());
                 int y = maxStairHeight() - 100;
                 Point point = new Point(x, y);
                 visStairs[i].moveToLocation(x, y);

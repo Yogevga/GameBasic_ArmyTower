@@ -50,12 +50,12 @@ public class MyKeyboardListener extends KeyboardListener{
 		System.out.println("a key pressed.");
 	}
 
-	@Override
-	public void dKeyPressed() {
-		//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.RIGHT);
-		myContent.soldier().setDirectionPolicy(Soldier.Direction.RIGHT);
-		System.out.println("d key pressed.");
-	}
+	// @Override
+	// public void dKeyPressed() {
+	// 	//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.RIGHT);
+	// 	myContent.soldier().setDirectionPolicy(Soldier.Direction.RIGHT);
+	// 	System.out.println("d key pressed.");
+	// }
 
 	@Override
 	public void wKeyPressed() {
@@ -64,23 +64,23 @@ public class MyKeyboardListener extends KeyboardListener{
 		//System.out.println("w key pressed.");
 	}
 
-	@Override
-	public void sKeyPressed() {
-		//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.DOWN);
-		myContent.soldier().setDirectionPolicy(Soldier.Direction.UP);
-		System.out.println("s key pressed.");
-	}
+	// @Override
+	// public void sKeyPressed() {
+	// 	//myContent.pokeball().setDirectionPolicy(MyCharacter.Direction.DOWN);
+	// 	myContent.soldier().setDirectionPolicy(Soldier.Direction.UP);
+	// 	System.out.println("s key pressed.");
+	// }
 	
 	@Override
 	public void backSpaceKeyPressed() {
 		System.out.println("backSpace key pressed.");
 	}
 	
-	@Override
-	public void spaceKeyPressed() {
-		myContent.soldier().setDirectionPolicy(Soldier.Direction.UP);
-		System.out.println("space key pressed.");
-	}
+	// @Override
+	// public void spaceKeyPressed() {
+	// 	myContent.soldier().setDirectionPolicy(Soldier.Direction.UP);
+	// 	System.out.println("space key pressed.");
+	// }
 	
 	public void otherKeyPressed(KeyEvent e) {
 		System.out.println("other key pressed. type:" + e);

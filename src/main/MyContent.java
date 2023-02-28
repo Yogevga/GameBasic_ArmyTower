@@ -20,13 +20,7 @@ public class MyContent extends GameContent {
 
 	@Override
 	public void initContent() {
-		Point[] points = new Point[6];
-		for (int i = 0; i < points.length; i++) {
-			int x = (int) (850 * Math.random());
-			points[i] = new Point(x, 100 + 100 * i);
-		}
-
-		stairs = new Stairs(points);
+		stairs = new Stairs();
 		score = new Score();
 		rank = new Rank();
 		rank.setLocation(new Point(660, 550));
