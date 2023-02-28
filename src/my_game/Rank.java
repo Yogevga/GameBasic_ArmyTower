@@ -41,7 +41,7 @@ public class Rank {
 		return this.imageID;
 	}
     public void setImage(int index) {
-		if (index > images.length) this.imageIndex = images.length;
+		if (index > (images.length-1)) this.imageIndex = images.length-1;
 		else this.imageIndex = index;
         Game.UI().canvas().hide(imageID);
         Game.UI().canvas().changeImage(imageID, getImageName(), 220, 200);
@@ -52,8 +52,12 @@ public class Rank {
         return images[imageIndex];
     }
 
+	public int getRank(){
+		return this.rank;
+	}
+
 	public boolean isMaxRank(){
-        return (rank == (images.length));
+        return (rank == (images.length-1));
     }
 
     public void updateRank(int rank){

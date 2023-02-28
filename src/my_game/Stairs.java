@@ -17,7 +17,12 @@ public class Stairs {
     };
     private int currColor = 0;
 
-    public Stairs(Point[] points) {
+    public Stairs() {
+        Point[] points = new Point[6];
+		for (int i = 0; i < points.length; i++) {
+			int x = (int) (850 * Math.random());
+			points[i] = new Point(x, 100 + 100 * i);
+		}
         visStairs = new Floor[points.length];
         Color c = getColor();
         for (int i = 0; i < points.length; i++) {

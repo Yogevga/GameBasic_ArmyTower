@@ -88,6 +88,7 @@ public class GamePlay {
 	}
 
 	private void isGameWin() {
+		//System.out.println(content.rank().getRank());
 		if (content.rank().isMaxRank()){
 			GameCanvas canvas = Game.UI().canvas();
 			Text t1 = new Text("gamewin", "YOU_WIN", 300, 500);
