@@ -21,6 +21,7 @@ public class GamePlay {
 		handleScore();
 		handleRank();
 		isGameOver();
+		isGameWin();
 		// music();
 	}
 
@@ -38,7 +39,7 @@ public class GamePlay {
 		GameCanvas canvas = Game.UI().canvas();
 		int maxHeight = canvas.getBounds().height;
 		int maxWidth = canvas.getBounds().width;
-		if (content.soldier().getLocation().x >= maxWidth || content.soldier().getLocation().x < 0) {
+		if (content.soldier().getCenterLocation().x >= maxWidth || content.soldier().getCenterLocation().x < 0) {
 			content.soldier().switchDirectionPolicy();
 		} else if (content.soldier().getLocation().y >= maxHeight || content.soldier().getLocation().y < 100) {
 			content.soldier().moveLocation(0, 20);
@@ -84,6 +85,19 @@ public class GamePlay {
 				Game.audioPlayer().stop();
 			}
 		}
+	}
+
+	private void isGameWin() {
+		if (content.rank().isMaxRank()){
+			GameCanvas canvas = Game.UI().canvas();
+			Text t1 = new Text("gamewin", "YOU_WIN", 300, 500);
+			t1.setColor(Color.GREEN);
+			t1.setFontName("Palatino");
+			t1.setFontSize(100);
+			canvas.addShape(t1);
+			Game.audioPlayer().stop();
+		}
+
 	}
 
 	public void changSetUp()

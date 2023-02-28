@@ -19,7 +19,7 @@ public class Rank {
 	
     public void addToCanvas() {
 		GameCanvas canvas = Game.UI().canvas();
-		Image image = new Image(getImageID(), getImageName(), rankImageWidth, rankImageHeight, 930, 90);
+		Image image = new Image(getImageID(), getImageName(), rankImageWidth, rankImageHeight, 1200, 90);
 		//image.setShapeListener(this);
 		image.setzOrder(3);
 		canvas.addShape(image);
@@ -41,14 +41,19 @@ public class Rank {
 		return this.imageID;
 	}
     public void setImage(int index) {
-		this.imageIndex = index;
+		if (index > images.length) this.imageIndex = images.length;
+		else this.imageIndex = index;
         Game.UI().canvas().hide(imageID);
         Game.UI().canvas().changeImage(imageID, getImageName(), 220, 200);
         Game.UI().canvas().show(imageID);
 	}
 
     public String getRankImage(){
-        return images[0];
+        return images[imageIndex];
+    }
+
+	public boolean isMaxRank(){
+        return (rank == (images.length));
     }
 
     public void updateRank(int rank){
